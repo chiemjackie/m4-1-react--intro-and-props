@@ -102,17 +102,17 @@ function VideoPlayer(props) {
 ---
 
 ```jsx
-function Tweet(props) {
+function Tweet({bunnyImage, bunnyUsername, bunnyHandle, bunnyDate, tweetText}) {
   return (
     <div>
-      <Avatar src="/images/bunny.jpg" />
+      <Avatar src={bunnyImage} />
       <div>
         <p>
-          <span className="user-name">Mr. Bunny</span>
-          <span className="handle">@mr-bunny</span>
-          <span className="date">Oct 29th</span>
+          <span className="user-name">{bunnyUsername}</span>
+          <span className="handle">{bunnyHandle}</span>
+          <span className="date">{bunnyDate}</span>
         </p>
-        <p>Alfalfa is the best food don't @ me</p>
+        <p>{tweetText}</p>
         <div>
           <button>Reply</button>
           <button>Retweet</button>
@@ -128,13 +128,13 @@ function Tweet(props) {
 ---
 
 ```jsx
-function Header(props) {
+function Header({ title, navLinks }) {
   return (
     <header>
-      <h1>My great website</h1>
+      <h1>{title}</h1>
       <nav>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
+        <a href={navLinks.about.url}>{navLinks.about.label}</a>
+        <a href={navLinks.contact.url}>{navLinks.contact.label}</a>
       </nav>
     </header>
   );
@@ -229,24 +229,20 @@ Use `map` in the following snippets.
 
 ```jsx
 const pets = [
-  /* omitted */
+  
 ];
 
 <div>
   <h1 className="title">My pets:</h1>
   <ul>
-    <PetInfo
-      name={pets[0].name}
-      age={pets[0].age}
-      species={pets[0].species}
-      breed={pets[0].breed}
-    />
-    <PetInfo
-      name={pets[1].name}
-      age={pets[1].age}
-      species={pets[1].species}
-      breed={pets[1].breed}
-    />
+    {pets.map(pet =>
+      <PetInfo 
+        name={pet.name}
+        age={pet.age}
+        species={pet.species}
+        breed={pet.breed}
+      />
+    )}
   </ul>
 </div>;
 ```
@@ -258,14 +254,7 @@ const forecasts = [4, -3, 1, 9, 4, 2, -6];
 
 <div>
   <h1>Weather forecast for the week ahead:</h1>
-
-  <Day>4 degrees</Day>
-  <Day>-3 degrees</Day>
-  <Day>1 degrees</Day>
-  <Day>9 degrees</Day>
-  <Day>4 degrees</Day>
-  <Day>2 degrees</Day>
-  <Day>-6 degrees</Day>
+  {forecasts.map(temp => <Day>{temp} degrees</Day>)}
 </div>;
 ```
 
@@ -280,8 +269,9 @@ const pizzaToppings = [
 ]
 
 <Pizza>
-  <Topping name="green pepper" />
-  <Topping name="broccoli" />
+  {pizzaToppings
+    .filter(topping => topping.isVegetarian)
+    .map(toppings => <Topping name={topping.name} />)}
 </Pizza>
 ```
 

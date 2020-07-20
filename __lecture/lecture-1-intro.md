@@ -164,19 +164,23 @@ Convert this JSX snippet to HTML:
 ```jsx
 let birthdayCakeImage = "/images/cake.jpg";
 let age = 10;
+let altText = 'birthday cake'
 
 <div className="wrapper">
   <img src={birthdayCakeImage} alt={altText} />
   <p>Happy {age}th birthday!</p>
 </div>;
 ```
-
+<div class="wrapper">
+  <img src='/images/cake.jpg' alt='birthday cake'>
+  <p>Happy 10th birthday! </p>
+</div>
 ---
 
 Convert this one too:
 
 ```jsx
-let agreeToTerms = false;
+let agreeToTerms = true;
 
 <div>
   <label htmlFor="terms-of-service">
@@ -186,7 +190,13 @@ let agreeToTerms = false;
   {agreeToTerms && <div>YOUR SOUL BELONGS TO ME MWAHAHAHAHAAAAAAHHHHHH!!!</div>}
 </div>;
 ```
-
+<div>
+  <label for="terms-of-service">
+    <input type="checkbox" id="terms-of-service" checked/>
+    I agree to the terms
+  </label>
+  <div>YOUR SOUL BELONGS TO ME MWAHAHAHAHAAAAAAHHHHHH!!!</div>
+</div>
 ---
 
 Convert:
@@ -208,10 +218,10 @@ const pets = [
 ];
 
 <div>
-  <h1 className="title">My pets:</h1>
+  <h1 class="title">My pets:</h1>
   <ul>
     <li>
-      <h2>{pets[0].name}</h2>
+      <h2>Bark Obama</h2>
       <table>
         <thead>
           <tr>
@@ -222,16 +232,16 @@ const pets = [
         </thead>
         <tbody>
           <tr>
-            <td>{pets[0].age}</td>
-            <td>{pets[0].species}</td>
-            <td>{pets[0].breed}</td>
+            <td>3</td>
+            <td>dog</td>
+            <td>Labradoodle</td>
           </tr>
         </tbody>
       </table>
     </li>
 
     <li>
-      <h2>{pets[1].name}</h2>
+      <h2>Chairman Meow</h2>
       <table>
         <thead>
           <tr>
@@ -242,9 +252,9 @@ const pets = [
         </thead>
         <tbody>
           <tr>
-            <td>{pets[1].age}</td>
-            <td>{pets[1].species}</td>
-            <td>{pets[1].breed}</td>
+            <td>8</td>
+            <td>cat</td>
+            <td>ragdoll</td>
           </tr>
         </tbody>
       </table>
