@@ -1,0 +1,44 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: normal;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+}
+
+.username {
+  font-size: 13px;
+  color: grey;
+}
+
+.message-body {
+  background-color: lightgrey;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.avatar {
+  max-height: 25px;
+  border-radius: 100px;
+}
+
+.sent,
+.received {
+  display: flex;
+  align-items: center;
+}
+
+.received {
+  color: #000;
+  background-color: #e9e9eb;
+}
+
+.sent {
+  float: right;
+  background: #1185f7;
+  color: #fff;
+}
+
+.message-body {
+}
